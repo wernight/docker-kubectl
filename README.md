@@ -1,4 +1,4 @@
-[![](https://badge.imagelayers.io/wernight/kubectl:latest.svg)](https://imagelayers.io/?images=wernight/kubectl:latest 'Get your own badge on imagelayers.io')
+ [![](https://images.microbadger.com/badges/image/wernight/kubectl.svg)](http://microbadger.com/images/wernight/kubectl "Get your own image badge on microbadger.com")
 
 Dockerized `kubectl` CLI tool for [Kubernetes](http://kubernetes.io/). Built on top of Alpine Linux (very small) with `glibc` installed (required by `kubectl`).
 
