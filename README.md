@@ -13,9 +13,9 @@ For example to access a local Kubernetes cluster you may run:
 
     $ docker run --net=host --user $UID -v ~/.kube:/config/.kube wernight/kubectl -- kubectl cluster-info
 
-  * `-net=host` is optional, it's just make sure it can reach your Kubernetes cluster.
-  * `--user $UID` is optional, by default runs as random UID, this allows to access you existing `~/.kube` if you have one. As you can note, you can run `kubectl` as any UID/GID.
-  * `-v XXX:/config` is optional, allows to store its configuration and possibly access existing configuration. Note that `/config` will always be that directory containing `.kube` (it's the force `HOME` directory).
+  * `-net=host`: (optional) allows to connect to a local Kubernetes cluster.
+  * `--user $UID`: (optional) by default runs as random UID `2342`, this allows to access your existing `~/.kube` if you have one. As you can note, you can run `kubectl` as any UID/GID.
+  * `-v XXX:/config`: (optional) allows to store its configuration and possibly access existing configuration. Note that `/config` will always be that directory containing `.kube` (it's the force `HOME` directory). Can be read-only.
 
 ## Why use it
 
