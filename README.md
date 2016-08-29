@@ -7,10 +7,15 @@ Dockerized `kubectl` CLI tool for [Kubernetes](http://kubernetes.io/). Built on 
 
 ## Usage
 
-    $ docker run --rm --net=host wernight/kubectl kubectl --help
+    $ docker run --rm wernight/kubectl -- kubectl --help
 
-Note: `--net=host` is optional, just make sure it can reach your Kubernetes
-cluster.
+For example to access a local Kubernetes cluster you may run:
+
+    $ docker run --net=host --user $UID -v ~/.kube:/config/.kube wernight/kubectl -- kubectl cluster-info
+
+  * `-net=host` is optional, it's just make sure it can reach your Kubernetes cluster.
+  * `--user $UID` is optional, by default runs as random UID, this allows to access you existing `~/.kube` if you have one. As you can note, you can run `kubectl` as any UID/GID.
+  * `-v XXX:/config` is optional, allows to store its configuration and possibly access existing configuration. Note that `/config` will always be that directory containing `.kube` (it's the force `HOME` directory).
 
 ## Why use it
 
@@ -18,3 +23,8 @@ It's mostly meant to be used during continuous integration or as part of an auto
 
   * So that your machine (e.g. build server) doesn't need `kubectl` to be installed; only Docker.
   * To avoid `kubectl config use-context` and similar to affect your build and other projects' builds.
+
+## Feedbacks
+
+Suggestions are welcome on our [GitHub issue tracker](https://github.com/wernight/docker-kubectl/issues).
+

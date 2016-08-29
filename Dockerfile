@@ -7,6 +7,11 @@ ADD https://storage.googleapis.com/kubernetes-release/release/v1.3.6/bin/linux/a
 
 RUN set -x && \
     apk add --no-cache curl ca-certificates && \
-    chmod +x /usr/local/bin/kubectl
+    chmod +x /usr/local/bin/kubectl && \
+    # Create non-root user (with a randomly chosen UID/GUI).
+    adduser kubectl -Du 2342 -h /config
+
+ENV HOME=/config
+USER kubectl
 
 CMD ["kubectl"]
