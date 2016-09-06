@@ -21,7 +21,15 @@ For example to access a local Kubernetes cluster you may run:
   * `--user $UID`: (optional) by default runs as random UID `2342`, this allows to access your existing `~/.kube` if you have one. As you can note, you can run `kubectl` as any UID/GID.
   * `-v XXX:/config`: (optional) allows to store its configuration and possibly access existing configuration. Note that `/config` will always be the directory containing `.kube` (it's the forced `HOME` directory). Can be read-only. Alternatively you can mount a Kubernetes service account for example: `-v /var/run/secrets/kubernetes.io/serviceaccount:/var/run/secrets/kubernetes.io/serviceaccount:ro`.
 
-## Why use it
+### Alias
+
+You may setup an alias to run this is if you were running kubectl directly, for example:
+
+    $ alias kubectl=docker run --rm --user $UID \
+        -v /var/run/secrets/kubernetes.io/serviceaccount:/var/run/secrets/kubernetes.io/serviceaccount:r \
+        wernight/kubectl
+
+### Why use it
 
 It's mostly meant to be used during continuous integration or as part of an automated build/deployment:
 
