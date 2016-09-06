@@ -7,7 +7,9 @@ Dockerized `kubectl` CLI tool for [Kubernetes](http://kubernetes.io/) built on t
 
 ## Usage
 
-    $ docker run --rm wernight/kubectl -- kubectl --help
+    $ docker run --rm wernight/kubectl --help
+
+Note: Entrypoint is set to kubectl so do **not** type `wernight/kubectl kubectl`.
 
 For example to access a local Kubernetes cluster you may run:
 
