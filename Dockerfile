@@ -5,13 +5,18 @@ FROM alpine:3.4
 # https://aur.archlinux.org/packages/kubectl-bin/
 ADD https://storage.googleapis.com/kubernetes-release/release/v1.3.6/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 
+ENV HOME=/config
+
 RUN set -x && \
     apk add --no-cache curl ca-certificates && \
     chmod +x /usr/local/bin/kubectl && \
+    \
     # Create non-root user (with a randomly chosen UID/GUI).
-    adduser kubectl -Du 2342 -h /config
+    adduser kubectl -Du 2342 -h /config && \
+    \
+    # Basic check it works.
+    kubectl version --client
 
-ENV HOME=/config
 USER kubectl
 
-CMD ["kubectl"]
+ENTRYPOINT ["/usr/local/bin/kubectl"]
