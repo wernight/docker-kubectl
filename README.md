@@ -17,7 +17,7 @@ For example to access a local Kubernetes cluster you may run:
 
   * `-net=host`: (optional) allows to connect to a local Kubernetes cluster.
   * `--user $UID`: (optional) by default runs as random UID `2342`, this allows to access your existing `~/.kube` if you have one. As you can note, you can run `kubectl` as any UID/GID.
-  * `-v XXX:/config`: (optional) allows to store its configuration and possibly access existing configuration. Note that `/config` will always be that directory containing `.kube` (it's the force `HOME` directory). Can be read-only.
+  * `-v XXX:/config`: (optional) allows to store its configuration and possibly access existing configuration. Note that `/config` will always be the directory containing `.kube` (it's the forced `HOME` directory). Can be read-only. Alternatively you can mount a Kubernetes service account for example: `-v /var/run/secrets/kubernetes.io/serviceaccount:/var/run/secrets/kubernetes.io/serviceaccount:ro`.
 
 ## Why use it
 
@@ -29,4 +29,3 @@ It's mostly meant to be used during continuous integration or as part of an auto
 ## Feedbacks
 
 Suggestions are welcome on our [GitHub issue tracker](https://github.com/wernight/docker-kubectl/issues).
-
