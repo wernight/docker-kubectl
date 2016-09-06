@@ -3,7 +3,9 @@
   * [`1`, `1.3`, `1.3.6`, `latest`](https://github.com/wernight/docker-kubectl/blob/master/Dockerfile) [![](https://images.microbadger.com/badges/image/wernight/kubectl.svg)](http://microbadger.com/images/wernight/kubectl "Get your own image badge on microbadger.com")
   * [`1.2`, `1.2.4`](https://github.com/wernight/docker-kubectl/blob/v1.2.4/Dockerfile) [![](https://images.microbadger.com/badges/image/wernight/kubectl:1.2.4.svg)](http://microbadger.com/images/wernight/kubectl "Get your own image badge on microbadger.com")
 
-Dockerized `kubectl` CLI tool for [Kubernetes](http://kubernetes.io/) built on top of [Alpine Linux](https://hub.docker.com/_/alpine).
+## What is `kubectl`
+
+`kubectl` is a CLI tool to control a cluster [Kubernetes](http://kubernetes.io/).
 
 ## Usage
 
@@ -23,11 +25,15 @@ For example to access a local Kubernetes cluster you may run:
 
 ### Alias
 
-You may setup an alias to run this is if you were running `kubectl` directly, for example:
+You may setup an alias to run this is if you were running `kubectl` directly.
+Here is a function that work for Bash/ZSH:
 
-    $ alias kubectl=docker run --rm --user $UID \
+    function kubectl() {
+      docker run --rm -it --user $UID:$GID \
         -v /var/run/secrets/kubernetes.io/serviceaccount:/var/run/secrets/kubernetes.io/serviceaccount:ro \
-        wernight/kubectl
+        -w /code -v "$PWD":/code:ro \
+        wernight/kubectl "$@"
+    }
 
 ### Why use it
 
