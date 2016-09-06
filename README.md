@@ -23,10 +23,10 @@ For example to access a local Kubernetes cluster you may run:
 
 ### Alias
 
-You may setup an alias to run this is if you were running kubectl directly, for example:
+You may setup an alias to run this is if you were running `kubectl` directly, for example:
 
     $ alias kubectl=docker run --rm --user $UID \
-        -v /var/run/secrets/kubernetes.io/serviceaccount:/var/run/secrets/kubernetes.io/serviceaccount:r \
+        -v /var/run/secrets/kubernetes.io/serviceaccount:/var/run/secrets/kubernetes.io/serviceaccount:ro \
         wernight/kubectl
 
 ### Why use it
