@@ -11,7 +11,9 @@ Dockerized `kubectl` CLI tool for [Kubernetes](http://kubernetes.io/) built on t
 
 For example to access a local Kubernetes cluster you may run:
 
-    $ docker run --net=host --user $UID -v ~/.kube:/config/.kube wernight/kubectl -- kubectl cluster-info
+    $ docker run --rm --net=host --user $UID \
+        -v ~/.kube:/config/.kube \
+        wernight/kubectl cluster-info
 
   * `-net=host`: (optional) allows to connect to a local Kubernetes cluster.
   * `--user $UID`: (optional) by default runs as random UID `2342`, this allows to access your existing `~/.kube` if you have one. As you can note, you can run `kubectl` as any UID/GID.
