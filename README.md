@@ -26,9 +26,9 @@ For example to access a local Kubernetes cluster you may run:
 ### Alias
 
 You may setup an alias to run this is if you were running `kubectl` directly.
-Here is a function that work for Bash/ZSH:
+Here is a function POSIX-compatible that work for most shells:
 
-    function kubectl() {
+    kubectl () {
       docker run --rm -it --user $UID:$GID \
         -v /var/run/secrets/kubernetes.io/serviceaccount:/var/run/secrets/kubernetes.io/serviceaccount:ro \
         -w /code -v "$PWD":/code:ro \
