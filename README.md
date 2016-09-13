@@ -13,6 +13,8 @@
 
 Note: Entrypoint is set to kubectl so do **not** type `wernight/kubectl kubectl`.
 
+### Usage example 1
+
 For example to access a local Kubernetes cluster you may run:
 
     $ docker run --rm --net=host --user $UID \
@@ -22,6 +24,18 @@ For example to access a local Kubernetes cluster you may run:
   * `-net=host`: (optional) allows to connect to a local Kubernetes cluster.
   * `--user $UID`: (optional) by default runs as random UID `2342`, this allows to access your existing `~/.kube` if you have one. As you can note, you can run `kubectl` as any UID/GID.
   * `-v XXX:/config`: (optional) allows to store its configuration and possibly access existing configuration. Note that `/config` will always be the directory containing `.kube` (it's the forced `HOME` directory). Can be read-only. Alternatively you can mount a Kubernetes service account for example: `-v /var/run/secrets/kubernetes.io/serviceaccount:/var/run/secrets/kubernetes.io/serviceaccount:ro`.
+
+### Usage example 2
+
+Here we use the service-account, so this should work from within a Pod on your cluster as long as you've docker installed (and may be `DOCKER_HOST` set up properly):
+
+    $ docker run \
+        -v /var/run/secrets/kubernetes.io/serviceaccount/:/var/run/secrets/kubernetes.io/serviceaccount/:ro \
+        wernight/kubectl \
+        -s https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT \
+        --token="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+        --certificate-authority=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+        cluster-info
 
 ### Alias
 
