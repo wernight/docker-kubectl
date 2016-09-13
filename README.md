@@ -32,10 +32,12 @@ Here we use the service-account, so this should work from within a Pod on your c
     $ docker run \
         -v /var/run/secrets/kubernetes.io/serviceaccount/:/var/run/secrets/kubernetes.io/serviceaccount/:ro \
         wernight/kubectl \
-        -s https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT \
+        -s https://kubernetes \
         --token="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
         --certificate-authority=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
         cluster-info
+
+Note: Alternatively to using kube-dns, you can use environment variables set within Kubernetes containers: `https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT`.
 
 ### Alias
 
