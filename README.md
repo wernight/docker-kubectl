@@ -4,7 +4,7 @@
   * [`1`, `1.5`, `1.5.3`](https://github.com/wernight/docker-kubectl/blob/master/Dockerfile) [![](https://images.microbadger.com/badges/image/wernight/kubectl:1.5.3.svg)](http://microbadger.com/images/wernight/kubectl "Get your own image badge on microbadger.com")
   * [`1`, `1.3`, `1.3.6`](https://github.com/wernight/docker-kubectl/blob/v1.3.6/Dockerfile) [![](https://images.microbadger.com/badges/image/wernight/kubectl:1.3.6.svg)](http://microbadger.com/images/wernight/kubectl "Get your own image badge on microbadger.com")
   * [`1.2`, `1.2.4`](https://github.com/wernight/docker-kubectl/blob/v1.2.4/Dockerfile) [![](https://images.microbadger.com/badges/image/wernight/kubectl:1.2.4.svg)](http://microbadger.com/images/wernight/kubectl "Get your own image badge on microbadger.com")
-
+  
 ## What is `kubectl`
 
 `kubectl` is a CLI tool to control a cluster [Kubernetes](http://kubernetes.io/).
